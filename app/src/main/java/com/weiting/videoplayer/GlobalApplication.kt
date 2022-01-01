@@ -15,6 +15,7 @@ class GlobalApplication : Application() {
         var  application: GlobalApplication by Delegates.notNull()
     }
 
+    // Create the repo and application.
     override fun onCreate() {
         super.onCreate()
 
