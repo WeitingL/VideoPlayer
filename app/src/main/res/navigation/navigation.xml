@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/videoListFragment">
+
+    <fragment
+        android:id="@+id/videoListFragment"
+        android:name="com.weiting.videoplayer.ui.videolist.VideoListFragment"
+        android:label="fragment_videolist"
+        tools:layout="@layout/fragment_videolist" />
+    <fragment
+        android:id="@+id/mediaPlayerFragment"
+        android:name="com.weiting.videoplayer.ui.mediaplayer.MediaPlayerFragment"
+        android:label="fragment_mediaplayer"
+        tools:layout="@layout/fragment_mediaplayer" />
+    <action android:id="@+id/action_global_mediaPlayerFragment" app:destination="@id/mediaPlayerFragment" />
+</navigation>
