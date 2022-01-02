@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.weiting.videoplayer.databinding.FragmentVideolistBinding
 import com.weiting.videoplayer.databinding.RowVideoListBinding
 
-class VideoListAdapter : ListAdapter<String, VideoListAdapter.VideoListViewHolder>(DiffCallback) {
+class VideoListAdapter(val onClickListener: OnClickListener) :
+    ListAdapter<String, VideoListAdapter.VideoListViewHolder>(DiffCallback) {
 
     object DiffCallback : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
@@ -39,6 +39,14 @@ class VideoListAdapter : ListAdapter<String, VideoListAdapter.VideoListViewHolde
     }
 
     override fun onBindViewHolder(holder: VideoListViewHolder, position: Int) {
-        return holder.bind(position, getItem(position))
+        holder.bind(position, getItem(position))
+        holder.itemView.setOnClickListener {
+            onClickListener.clickListener(position, getItem(position))
+        }
     }
+
+    class OnClickListener(val clickListener: (position: Int, uri: String) -> Unit) {
+        fun onClick(position: Int, uri: String) = clickListener(position, uri)
+    }
+
 }

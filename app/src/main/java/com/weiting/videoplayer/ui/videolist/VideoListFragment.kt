@@ -25,7 +25,9 @@ class VideoListFragment : Fragment() {
 
         val vmFactory = VideoListViewModelFactory(GlobalApplication.application.database)
         val viewModel = ViewModelProvider(this, vmFactory).get(VideoListViewModel::class.java)
-        val adapter = VideoListAdapter()
+        val adapter = VideoListAdapter(VideoListAdapter.OnClickListener{ position, uri ->
+            findNavController().navigate(NavigationDirections.actionGlobalMediaPlayerFragment(position, uri))
+        })
 
         viewModel.videoList.observe(viewLifecycleOwner){
             adapter.submitList(it)
