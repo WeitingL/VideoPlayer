@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 }
@@ -53,5 +53,11 @@ dependencies {
     // Fragment
     def version_fragment = '1.4.0'
     implementation "androidx.fragment:fragment-ktx:$version_fragment"
+
+    //ExoPlayer
+    def version_exoplayer = '2.16.1'
+    implementation "com.google.android.exoplayer:exoplayer-core:$version_exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-dash:$version_exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$version_exoplayer"
 
 }
