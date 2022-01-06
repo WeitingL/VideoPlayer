@@ -31,7 +31,9 @@ class MediaPlayerFragment : Fragment() {
             MediaPlayerViewModelFactory(GlobalApplication.application.database, position, uri)
         val viewModel = ViewModelProvider(this, factory).get(MediaPlayerViewModel::class.java)
 
-        playController.getVideoResource(viewModel.currentMedia.value!!)
+//        playController.getVideoResource(viewModel.currentMedia.value!!)
+        playController.getVideos(viewModel.videoList.value!!)
+        playController.getCurrentPlayPosition(position)
 
         playerView = binding.pvVideo
         return binding.root
